@@ -16,17 +16,26 @@ public class App {
                 {"*", "*", "*", "*"},
         };
 
-        String[] imageOne= {"*", "*", "*", "*"};
+        String[][] editedMassive = Arrays.stream(image)
+                .map(m -> {
+                    int newLength = m.length * 2;
+                    String[] x2Massive = new String[newLength];
 
-        List<String[]> list = Arrays.asList(image);
+                    for (int i = 0; i < m.length; i++) {
+                        x2Massive[i + (m.length / 2)] = m[i];
+                    }
 
-        List<List<String>> ret = list.stream()
-                .map(m -> Arrays.asList(m))
-                .toList();
+                    return x2Massive;
+                })
+                .toArray(String[][]::new);
 
-        List<List<String>> ret1 = Arrays.stream(image)
-                        .map(arr -> Arrays.asList(arr))
-                                .toList();
+        for (String[] strings : editedMassive) {
+            System.out.println(Arrays.toString(strings));
+        }
+
+//        List<List<String>> ret1 = Arrays.stream(image)
+//                        .map(arr -> Arrays.asList(arr))
+//                                .toList();
 
         //System.out.println(back);
 
